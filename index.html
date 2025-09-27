@@ -137,59 +137,78 @@
   </div>
 </section>
 
-
 <section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Generation Performance. -->
-      <div class="columns is-centered">
-      <div class="column is-full-width">
-        <div class="content">
-          <h2 class="title is-3">Generation Performance</h2>
-          <p>
-            EqM exceeds GAN, Diffusion, and Flow Matching in generation performance.
-          </p>
-         <img src="samples.png"/>   
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width has-text-justified">
+            <h2 class="title is-3 has-text-centered">Generation Performance</h2>
+            <div class="content has-text-justified">
+              <p>
+                Equilibrium Matching is guaranteed to learn the data manifold and produce samples from this manifold using gradient descent. 
+                Empirically, Equilibrium Matching achieves 1.90 FID on ImageNet 256$\times$256 generation, 
+                outperforming existing diffusion and flow-based counterparts in generation quality. 
+                Equilibrium Matching also exhibits strong scaling behavior, exceeding the flow-based counterpart at all tested scales.
+              </p>
+            </div>
+            <br />
+            <div class="content has-text-centered">
+              <img src="samples.png"/>   
+            </div>
+          </div>
         </div>
       </div>
-      </div>
+    </section>
 
-      <!--/ Generation Performance. -->
-
-      <!-- Optimization Sampling. -->
-      <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Optimization Sampling</h2>
-          <div class="content">
-            <p>
-              EqM enables optimization-based sampling with variable step size, adaptive optimizers, and adaptive inference-time compute.
-            </p>
-            <img src="opt.png"/>   
-
+  <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width has-text-justified">
+            <h2 class="title is-3 has-text-centered">Optimization-Based Sampling</h2>
+            <div class="content has-text-justified">
+              <p>
+               By learning a single equilibrium dynamics, Equilibrium Matching supports optimization-based sampling, 
+                where samples are obtained by gradient descent on the learned landscape. 
+                Unlike existing diffusion samplers that integrate along a prescribed trajectory, 
+                optimization-based sampling supports different step sizes and adaptive optimizers. 
+                Existing gradient optimization techniques such as Nesterov Accelerated Gradient can be naturally adopted to achieve better generation quality. 
+                Equilibrium Matching can also allocate inference-time compute adaptively. 
+                It adjusts the sampling steps for each sample independently based on gradient norm and can save up to 60\% of function evaluations.les.
+              </p>
+            </div>
+            <br />
+            <div class="content has-text-centered">
+              <img src="opt.png"/>   
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-      <!--/ Optimization Sampling. -->
-
-    <!-- Unique Properties. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3"> Unique Properties</h2>
-        <div class="content">
-          <p>
-            EqM supports partially noised image denoising, OOD detection, and image composition by itself.
-          </p>
-          <img src="unique.png"/>   
+  <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width has-text-justified">
+            <h2 class="title is-3 has-text-centered">Unique Properties</h2>
+            <div class="content has-text-justified">
+              <p>
+               Equilibrium Matching demonstrates unique properties that traditional diffusion/flow-based models lack. 
+                Equilibrium Matching can generate high-quality samples directly from partially noised inputs, 
+                whereas flow-based models only perform well when starting with pure noise. 
+                Moreover, Equilibrium Matching can perform out-of-distribution (OOD) detection 
+                without relying on any external module. We also show that different Equilibrium Matching models 
+                can be added together to generate compositional images in a similar way as EBMs. 
+                Our results show that Equilibrium Matching offers capabilities unseen in traditional diffusion/flow models.
+              </p>
+            </div>
+            <br />
+            <div class="content has-text-centered">
+              <img src="unique.png"/>   
+            </div>
+          </div>
         </div>
-        
-        <!--/ Unique Properties. -->
-
-
-  </div>
-</section>
+      </div>
+    </section>
+  
 
 
 <section class="section" id="BibTeX">
