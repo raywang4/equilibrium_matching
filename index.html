@@ -282,16 +282,35 @@
               </p>
             </div>
             <br />
-            <div class="content has-text-centered">
-              <img src="compose.png"/>   
-            </div>
-            <br />
-            <div class="content">
-              <p class="is-size-7 has-text-centered">
-                Image Composition. We present compositional samples from EqM-XL/2 each using two ImageNet labels: 
-                panda and valley (leftmost), car mirror and volcano (second left), ice cream and chocolate syrup (second right), and broccoli and cauliflower (rightmost).
-              </p>
-              <hr />
+            <div class="columns is-vcentered">
+              <div class="column">
+                 <div class="content has-text-centered">
+                  <img src="compose.png"/>   
+                  </div>
+                  <br />
+                  <div class="content">
+                    <p class="is-size-7 has-text-centered">
+                      Partially Noised Image Generation. When starting with partially noised images, EqM <strong>successfully</strong> 
+                      generates realistic reconstruction while Flow Matching <strong>fails</strong>.
+                    </p>
+                    <hr />
+                  </div>
+              </div>
+              <div class="column">
+                <div class="content has-text-centered">
+                  <video autoplay muted loop playsinline style="width:100%; height:auto">
+                    <source src="side_by_side.mp4" type="video/mp4" />
+                  </video>   
+                </div>
+                <br />
+                <div class="content">
+                  <p class="is-size-7 has-text-centered">
+                    Image Composition. We present compositional samples from EqM-XL/2 each using two ImageNet labels: 
+                    panda and valley (leftmost), car mirror and volcano (second left), ice cream and chocolate syrup (second right), and broccoli and cauliflower (rightmost).
+                  </p>
+                  <hr />
+                </div>
+              </div>
             </div>
           </div>
         </div>
