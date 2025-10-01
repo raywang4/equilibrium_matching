@@ -121,11 +121,10 @@
     <div class="content">
       <p class="is-size-7 has-text-centered">
         Conceptual 2D Visualization. We compare the conceptual 2D dynamics of Equilibrium Matching and Flow Matching 
-        under 2 ground truths (marked by stars). We also include the sampling process of two real images, with <strong>identical step sizes and number of steps</strong>.
-      </p>
-      <p class="is-size-7 has-text-centered">
-        EqM learns an invariant gradient that <strong>always converges to ground truths</strong> and significantly speeds up convergence, 
+        under 2 ground truths (marked by stars). 
+        EqM learns an invariant gradient that <strong>always converges to ground truths</strong>, 
         whereas FM learns time-conditional velocity that <strong>only converges to ground truths at t=1</strong>.
+        We also compare the real sampling process of two methods. Under <strong>identical step sizes and number of steps</strong>, EqM <strong>converges much faster</strong> than FM.
       </p>
       <hr />
     </div>
@@ -315,8 +314,7 @@
                 <br />
                 <div class="content">
                   <p class="is-size-7 has-text-centered">
-                    Image Composition. We present compositional generation results from EqM-XL/2 by <strong>directly adding gradients</strong> from different conditional EqM models together. 
-                    We use two ImageNet labels for each sample: ice cream and chocolate syrup (left) and broccoli and cauliflower (right). EqM composes in a similar way as EBMs.
+                    Image Composition. We can compose different class-conditional EqM models by <strong>directly adding gradients</strong> together, in a similar way as EBMs.
                   </p>
                   <hr />
                 </div>
