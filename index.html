@@ -308,13 +308,15 @@
               </div>
               <div class="column">
                 <div class="content has-text-centered">
-                    <img src="compose.png"/>   
+                    <video autoplay muted loop playsinline style="width:100%; height:auto">
+                    <source src="side_by_side2.mp4" type="video/mp4" />
+                  </video> 
                 </div>
                 <br />
                 <div class="content">
                   <p class="is-size-7 has-text-centered">
-                    Image Composition. We present compositional samples from EqM-XL/2 each using two ImageNet labels: 
-                    panda and valley (leftmost), car mirror and volcano (second left), ice cream and chocolate syrup (second right), and broccoli and cauliflower (rightmost).
+                    Image Composition. We present compositional generation results from EqM-XL/2 by <strong>directly adding gradients</strong> from different conditional EqM models together. 
+                    We use two ImageNet labels for each sample: ice cream and chocolate syrup (left) and broccoli and cauliflower (right). EqM supports composition in a way similar to EBMs.
                   </p>
                   <hr />
                 </div>
