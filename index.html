@@ -288,19 +288,9 @@
           <div class="column is-full-width has-text-justified">
             <h2 class="title is-3 has-text-centered">Optimization-Based Sampling</h2>
             <div class="content has-text-justified">
-              <!-- <p>
-               By learning a single equilibrium dynamics, Equilibrium Matching supports optimization-based sampling, 
-                where samples are obtained by gradient descent on the learned landscape. 
-                Unlike existing diffusion samplers that integrate along a prescribed trajectory, 
-                optimization-based sampling supports different step sizes and adaptive optimizers. 
-                Existing gradient optimization techniques such as Nesterov Accelerated Gradient can be naturally adopted to achieve better generation quality. 
-                Equilibrium Matching can also allocate inference-time compute adaptively. 
-                It adjusts the sampling steps for each sample independently based on gradient norm and can save up to 60% of function evaluations.
-              </p> -->
               <p>
-                EqM offers promising opportunities at inference time. By learning a single equilibrium dynamics, EqM supports optimization-based sampling, 
-                where samples are obtained by gradient descent on the learned landscape. 
-                Building on top of this, we can adopt existing optimization techniques in our sampling procedure. 
+                EqM offers promising opportunities at inference time.
+                Building on top of gradient descent, we can adopt existing optimization techniques in our sampling procedure. 
                 As an example, we use Nesterov Accelerated Gradient, which applies a look-ahead step at each update and evaluates the gradient at that look-ahead point.
                 In the left figure below, we observe that NAG-GD consistently improves upon vanilla GD, and the quality gap increases as the total number of steps decreases. 
                 This aligns with our intuition that with fewer total steps, gradient descent requires more assistance to reach a desirable local minimum, making NAG more effective.
@@ -342,6 +332,25 @@
               </div>
             </div>
           </div>
+            <div class="content has-text-justified">
+            <p>
+                EqM also naturally supports integration-based samplers. ODE-based diffusion samplers can be viewed as a special case of our gradient-based method.
+              We provide a systematic comparison between traditional integration samplers and our proposed gradient descent samplers on EqM-XL/2. 
+                Euler ODE sampler, plain gradient descent, and NAG-GD all exceed the Flow Matching baseline by a large margin, with NAG-GD performing the best.
+              </p>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <img src="opts.png" style="width:40%; height:auto/>   
+              </div>
+              <br />
+              <div class="content">
+                <p class="is-size-7 has-text-centered">
+                  Sampler Comparison. EqM exceeds Flow Matching in performance (measured by FID) using both integration-based ODE sampler and gradient-based samplers.
+                </p>
+                <hr />
+              </div>
+            </div>
           </div>
         </div>
       </div>
