@@ -302,8 +302,8 @@
               <p>
                 Viewing sampling through an optimization perspective implies that the step size can be adjusted freely. 
                 For comparison, we also report the performance of the FM baseline, where we use the step size to replace the ODE update length at each step.
-                From the left figure below, we observe that our EqM model’s generation quality remains high and exceeds the FM baseline across all tested step sizes. 
-                By contrast, FM requires a specific step size to function properly, and small fluctuations in step size lead to significantly worse performance. 
+                We observe that our EqM model’s generation quality remains high across all tested step sizes, whereas
+                FM requires a specific step size to function properly and small fluctuations lead to significantly worse performance. 
                 This suggests that EqM constructs a fundamentally different landscape than FM, which enables new sampling schemes not supported by FM models.
               </p>
               </div>
@@ -311,7 +311,9 @@
               <p>
                 Another advantage of gradient-based sampling is that instead of a fixed number of sampling steps, 
                 we can allocate adaptive compute per sample by stopping when the gradient norm drops below a certain threshold.
-                From the right figure below, we see that this adaptive compute approach indeed assigns each sample different steps and saves up to 60% of function evaluations.
+                We present the distribution of total sampling steps for 1024 samples, 
+                which suggests that EqM assigns different inference-time compute for different samples and 
+                manages to lower the total compute to 40% of the original compute (original sampling uses fixed 250 steps). 
                 Our results offer promising evidence that EqM can enable new inference-time improvements.
               </p>
             </div>
@@ -429,7 +431,9 @@
             </div>
             <br />
             
-            <div class="column">
+            
+          </div>
+        <div class="column">
               <div class="content has-text-justified">
                 Another unique property of the EqM model is its inherent ability to perform out-of-distribution (OOD) detection using energy value.
                 We report the area under the ROC curve (AUROC). Compared with the baselines, 
@@ -447,7 +451,6 @@
                 <hr />
               </div>
             </div>
-          </div>
         </div>
       </div>
     </section>
