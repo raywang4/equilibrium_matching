@@ -288,18 +288,33 @@
           <div class="column is-full-width has-text-justified">
             <h2 class="title is-3 has-text-centered">Optimization-Based Sampling</h2>
             <div class="content has-text-justified">
+              <div class="columns is-vcentered">
+            <div class="column">
               <p>
                 EqM offers promising opportunities at inference time.
                 Building on top of gradient descent, we can adopt existing optimization techniques in our sampling procedure. 
                 As an example, we use Nesterov Accelerated Gradient, which applies a look-ahead step at each update and evaluates the gradient at that look-ahead point.
                 In the left figure below, we observe that NAG-GD consistently improves upon vanilla GD, and the quality gap increases as the total number of steps decreases. 
                 This aligns with our intuition that with fewer total steps, gradient descent requires more assistance to reach a desirable local minimum, making NAG more effective.
+              </p>
+            </div>
+            <div class="column">
+              <p>
                 Viewing sampling through an optimization perspective implies that the step size can be adjusted freely. 
-                We demonstrate this in the middle figure below, where EqM's performance remains stable across a wide range of step sizes but FM requires one specific step size.
+                For comparison, we also report the performance of the FM baseline, where we use the step size to replace the ODE update length at each step.
+                From the left figure below, we observe that our EqM model’s generation quality remains high and exceeds the FM baseline across all tested step sizes. 
+                By contrast, FM requires a specific step size to function properly, and small fluctuations in step size lead to significantly worse performance. 
+                This suggests that EqM constructs a fundamentally different landscape than FM, which enables new sampling schemes not supported by FM models.
+              </p>
+              </div>
+            <div class="column">
+              <p>
                 Another advantage of gradient-based sampling is that instead of a fixed number of sampling steps, 
                 we can allocate adaptive compute per sample by stopping when the gradient norm drops below a certain threshold.
                 From the right figure below, we see that this adaptive compute approach indeed assigns each sample different steps and saves up to 60% of function evaluations.
+                Our results offer promising evidence that EqM can enable new inference-time improvements.
               </p>
+            </div>
             </div>
             <br />
             <div class="content has-text-centered">
@@ -361,20 +376,21 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-full-width has-text-justified">
             <h2 class="title is-3 has-text-centered">Unique Properties</h2>
-            <div class="content has-text-justified">
-              <p>
-               Equilibrium Matching demonstrates unique properties that traditional diffusion/flow-based models lack. 
-                Equilibrium Matching can generate high-quality samples directly from partially noised inputs, 
-                whereas flow-based models only perform well when starting with pure noise. 
-                Moreover, Equilibrium Matching can perform out-of-distribution (OOD) detection 
-                without relying on any external module. We also show that different Equilibrium Matching models 
-                can be added together to generate compositional images in a similar way as EBMs. 
-                Our results show that Equilibrium Matching offers capabilities unseen in traditional diffusion/flow models.
-              </p>
+            
+              
             </div>
             <br />
             <div class="columns is-vcentered">
               <div class="column">
+                <div class="content has-text-justified">
+                <p>
+                 EqM demonstrates unique properties that traditional diffusion/flow-based models lack. 
+                  By learning an equilibrium dynamic, EqM can directly start with and denoise a partially noised image. 
+                  Existing diffusion/flow models require an explicit noise level as input to process partially noised images, but our EqM model does not have such a limitation.
+                  As shown on the bottom right, EqM can generate high-quality samples directly from partially noised inputs, 
+                  whereas flow-based models struggle and remains constant noise during sampling. 
+                </p>
+                </div>
                  <div class="content has-text-centered">
                   <video autoplay muted loop playsinline style="width:100%; height:auto">
                     <source src="side_by_side.mp4" type="video/mp4" />
@@ -383,13 +399,22 @@
                   <br />
                   <div class="content">
                     <p class="is-size-7 has-text-centered">
-                      Partially Noised Image Generation. EqM <strong>successfully</strong> 
-                      generates realistic reconstruction while Flow Matching <strong>fails</strong> and remains constant noise.
+                      Partially Noised Image Generation. EqM successfully 
+                      generates <strong>realistic reconstruction</strong> while Flow Matching fails and remains <strong>constant noise</strong>.
                     </p>
                     <hr />
                   </div>
               </div>
               <div class="column">
+                                <div class="content has-text-justified">
+                <p>
+                 EqM also naturally supports the composition of multiple models by adding energy landscapes together (corresponding to adding the gradients of each model). 
+                We test composition by combining models conditioned on different ImageNet class labels. 
+                We use our EqM-XL/2 model with GD sampler and add two conditional gradients together as the update gradient at each sampling step.
+                Our results on the right below demonstrate that EqM is easily composable by optimizing the summed gradient. 
+                This is similar to the composability of EBMs, while the composition of diffusion is significantly more complex to accurately implement.
+              </p>
+                                </div>
                 <div class="content has-text-centered">
                     <video autoplay muted loop playsinline style="width:100%; height:auto">
                     <source src="side_by_side2.mp4" type="video/mp4" />
@@ -405,6 +430,12 @@
               </div>
             </div>
             <div class="column">
+              <div class="content has-text-justified">
+                Another unique property of the EqM model is its inherent ability to perform out-of-distribution (OOD) detection using energy value.
+                We report the area under the ROC curve (AUROC). Compared with the baselines, 
+                EqM provides reasonable OOD detection across all tested datasets and achieves the best overall performance, 
+                suggesting that Equilibrium Matching indeed learns a valid energy landscape.
+              </div>
               <div class="content has-text-centered">
                 <img src="ood.png" style="width:40%; height:auto/>   
               </div>
