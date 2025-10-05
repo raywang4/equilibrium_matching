@@ -350,7 +350,7 @@
                 we can allocate adaptive compute per sample by stopping when the gradient norm drops below a certain threshold.
                 We present the distribution of total sampling steps for 1024 samples, 
                 which suggests that EqM assigns different inference-time compute for different samples and 
-                manages to lower the total compute to 40% of the original compute (original sampling uses fixed 250 steps). 
+                manages to lower the total compute by 60% (original sampling uses 250 steps). 
                 Our results offer promising evidence that EqM can enable new inference-time improvements.
               </p>
             </div>
@@ -366,7 +366,7 @@
               <div class="columns is-vcentered">
                 <div class="column">
                 <div class="content has-text-centered">
-                  <img src="sampright.png"  style="max-width: 80%; height: auto;" alt="Table"/>   
+                  <img src="sampright.png"  style="max-width: 100%; height: auto;" alt="Table"/>   
                 </div>
                 </div>
                 <div class="column">
@@ -434,9 +434,8 @@
               <div class="column">
                <div class="content has-text-justified">
                 <p>
-                 EqM also naturally supports the composition of multiple models by adding energy landscapes together (corresponding to adding the gradients of each model). 
-                We test composition by combining models conditioned on different ImageNet class labels. 
-                We use our EqM-XL/2 model with GD sampler and add two conditional gradients together as the update gradient at each sampling step.
+                 EqM also naturally supports the composition of multiple models by adding energy landscapes together. 
+                We test composition by combining models conditioned on different ImageNet class labels and add two conditional gradients together as the update gradient at each sampling step.
                 Our results on the right below demonstrate that EqM is easily composable by optimizing the summed gradient. 
                 This is similar to the composability of EBMs, while the composition of diffusion is significantly more complex to accurately implement.
               </p>
