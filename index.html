@@ -180,9 +180,8 @@
               <p>
                 Equilibrium Matching (EqM) learns a time-invariant gradient field that is compatible with an underlying energy function, 
                 eliminating time/noise conditioning and fixed-horizon integrators. 
-                Conceptually (\cref{concept}), EqM’s gradient vanishes on the data manifold and increases toward noise, 
+                Conceptually, EqM’s gradient vanishes on the data manifold and increases toward noise, 
                 yielding an equilibrium landscape in which ground-truth samples are stationary points. 
-                We illustrate the difference between Equilibrium Matching and Flow Matching in \cref{concept}. 
                 Flow Matching learns a varying velocity that only converges to ground truths at the final timestep, 
                 whereas EqM learns a time-invariant gradient landscape that always converges to ground-truth data points. 
               </p>
@@ -259,9 +258,15 @@
               </div>
             </div>
             
-            <!-- <div class="content has-text-centered">
-              <img src="process.png"/>   
-            </div> -->
+            <div class="content has-text-centered">
+              <img src="scales.png"/>   
+            </div>
+            <div class="content">
+                <p class="is-size-7 has-text-centered">
+              EqM scales across training epochs (left), parameter count (middle), and patch size (right), and outperforms Flow Matching at all tested scales by a significant margin.
+                </p>
+                <hr />
+              </div>
           </div>
         </div>
       </div>
