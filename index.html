@@ -338,10 +338,9 @@
                   <div class="content has-text-justified">
                     <p>
                       Another advantage of gradient-based sampling is that instead of a fixed number of sampling steps, 
-                    we can allocate adaptive compute per sample by stopping when the gradient norm drops below a certain threshold.
-                    We present the distribution of total sampling steps for 1024 samples, 
-                    which suggests that EqM assigns different inference-time compute for different samples and 
-                    manages to lower the total compute by 60% (original sampling uses 250 steps). 
+                    we can allocate adaptive compute per sample by stopping when the gradient norm drops below a threshold.
+                    We present the distribution of total sampling steps for 1024 samples using adaptive compute.
+                    EqM assigns different inference-time compute for different samples and lowers the total compute by 60% (original sampling uses 250 steps). 
                     Our results offer promising evidence that EqM can enable new inference-time improvements.
                     </p>
                   </div>
