@@ -339,9 +339,9 @@
                     <p>
                       Another advantage of gradient-based sampling is that instead of a fixed number of sampling steps, 
                     we can allocate adaptive compute per sample by stopping when the gradient norm drops below a threshold.
-                    We present the distribution of total sampling steps for 1024 samples using adaptive compute.
-                    EqM assigns different inference-time compute for different samples and lowers the total compute by 60% (original sampling uses 250 steps). 
-                    Our results offer promising evidence that EqM can enable new inference-time improvements.
+                    We present the distribution of total sampling steps for 1024 samples when using adaptive compute.
+                    Adaptive compute lowers the number of function evaluations by 60% (original sampling uses 250 steps), 
+                      offering promising evidence that EqM can enable new inference-time improvements.
                     </p>
                   </div>
                   <div class="content has-text-centered">
@@ -357,7 +357,7 @@
                 <div class="column">
                   <div class="content has-text-justified">
                     <p>
-                     EqM also naturally supports integration-based samplers. ODE-based diffusion samplers can be viewed as a special case of our gradient-based method by treating the velocity as a descent direction.
+                     EqM naturally supports integration-based samplers. ODE-based diffusion samplers can be viewed as a special case of our gradient-based method by treating the velocity as a descent direction.
                   We provide a systematic comparison between traditional integration samplers and our proposed gradient descent samplers on EqM-XL/2. 
                     Euler ODE sampler, plain gradient descent, and NAG-GD all exceed the Flow Matching baseline by a large margin, with NAG-GD performing the best.
                     </p>
